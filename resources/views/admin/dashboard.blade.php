@@ -19,8 +19,14 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+            
             </div>
         </div>
     </div>
+    <div class="row justify-content-center">
+        sto tornando, lentamente ma ritorno!
+    </div>
+    <div class="row justify-content-center">
+        <a href="{{route('admin.travels.create')}}" class="btn btn-primary">Crea un nuovo viaggio</a>
 </div>
 @endsection

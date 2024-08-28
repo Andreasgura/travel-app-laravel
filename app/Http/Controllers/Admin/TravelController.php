@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Travel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
 use App\Http\Controllers\Controller;
@@ -29,11 +31,22 @@ class TravelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTravelRequest $request)
-    {
-        //
+    public function store(Request $request)
+    {   
+        
+        $travel =new Travel();
+        $travel->name = $request->name;
+        $travel->description = $request->description;
+        $travel->start_date = $request->start_date;
+        $travel->end_date = $request->end_date;
+        $travel->save();
+        
+            return redirect()->route('admin.travels.index');
+     
+       
     }
 
+    
     /**
      * Display the specified resource.
      */

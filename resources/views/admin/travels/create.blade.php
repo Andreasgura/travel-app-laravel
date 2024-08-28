@@ -9,11 +9,11 @@
     <form class="row g-3" action="{{route('admin.travels.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="col-md-6">
-            <label for="name" class="form-label">title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                value="{{old('title')}}">
+            <label for="name" class="form-label">name</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                value="{{old('name')}}" required>
         </div>
-        @error('title')
+        @error('name')
             <div class="alert alert-danger">{{$message}}</div>
         @enderror
 

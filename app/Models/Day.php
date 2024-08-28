@@ -10,6 +10,7 @@ use App\Models\Travel;
 class Day extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function stages()
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Stage;
-use App\Http\Requests\StoreStageRequest;
-use App\Http\Requests\UpdateStageRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class StageController extends Controller
 {
@@ -27,7 +27,7 @@ class StageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStageRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,7 +51,7 @@ class StageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStageRequest $request, Stage $stage)
+    public function update(Stage $stage)
     {
         //
     }

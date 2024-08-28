@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('lat',30,15)->nullable();
             $table->decimal('long',30,15)->nullable();
             $table->unsignedBigInteger('day_id')->nullable();
+            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -2,9 +2,12 @@
 
 @section('content')
 
-    <section class="container">
-        <h1>Section title</h1>
-        <p>section content</p>
-    </section>
+    <ul>
+        @foreach ($travels as $travel)
+            <li>
+                <a href="{{ route('admin.travels.show', $travel) }}">{{ $travel->name }}</a>
+            </li>
+        @endforeach
+    </ul>
 
 @endsection

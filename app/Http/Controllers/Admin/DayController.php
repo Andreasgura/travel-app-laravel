@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Day;
-use App\Http\Requests\StoreDayRequest;
-use App\Http\Requests\UpdateDayRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Travel;
+use Illuminate\Http\Request;
 
 class DayController extends Controller
 {
@@ -13,23 +14,29 @@ class DayController extends Controller
      */
     public function index()
     {
-        //
+        $days = Day::all();
+        return view('admin.days.index', compact('days'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Travel $travel)
     {
-        //
+        return view('admin.days.create', compact('travel'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDayRequest $request)
+    public function store(Request $request, Travel $travel)
     {
-        //
+        $day = new Day();
+        $day->day_number = $request->day_number;
+        $day->description = $request->description;
+        $day->travel_id = $travel->id;
+        $day->save();
+        return redirect()->route('admin.days.index');        
     }
 
     /**
@@ -51,7 +58,7 @@ class DayController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDayRequest $request, Day $day)
+    public function update(Day $day)
     {
         //
     }

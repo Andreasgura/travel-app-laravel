@@ -2,9 +2,8 @@
 
 @section('content')
 <section class="container">
-    <div>crea nuovo viaggio</div>
     <section>
-    <h2 class="text-center tet-uppercase">inserisci un nuovo film</h2>
+    <h2 class="text-center tet-uppercase">crea nuovo viaggio</h2>
 
     <form class="row g-3" action="{{route('admin.travels.store')}}" method="POST" enctype="multipart/form-data">
         @csrf

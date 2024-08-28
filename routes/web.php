@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TravelController;
+use App\Http\Controllers\Admin\DayController;
+use App\Http\Controllers\Admin\StageController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('travels', TravelController::class)->parameters(['travels' => 'travel']); 
+    Route::get('days/create/{travel}', [DayController::class, 'create'])->name('days.create');
+    Route::post('days/store/{travel}', [DayController::class, 'store'])->name('days.store');
+    Route::resource('stages', StageController::class)->parameters(['stages' => 'stage']);
+
     //Route::resource('comics', ComicController::class);
 });
 

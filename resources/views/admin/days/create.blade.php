@@ -8,7 +8,7 @@
 
     <form class="row g-3" action="{{route('admin.days.store', $travel->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="travel_id" value="{{ $travel->id }}">
+        
         <div class="col-md-6">
             <label for="day_number" class="form-label">day_number</label>
             <input type="text" class="form-control @error('day_number') is-invalid @enderror" id="day_number" name="day_number"

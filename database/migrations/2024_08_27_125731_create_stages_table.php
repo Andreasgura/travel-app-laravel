@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->time('start_time');
             $table->time('end_time');
             $table->unsignedInteger('rate')->nullable();
             $table->string('note')->nullable();
+            
             $table->decimal('lat',30,15)->nullable();
             $table->decimal('long',30,15)->nullable();
             $table->unsignedBigInteger('day_id')->nullable();

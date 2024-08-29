@@ -20,6 +20,16 @@
         <div class="btn">
             <a href="{{ route('admin.days.edit', [$travel->id, $day->id]) }}">Modifica</a>
         </div>
+        
+        @foreach ($day->stages as $stage)
+        <div>
+            <a href="{{ route('admin.travels.days.stages.show', [$travel->id, $day->id, $stage->id]) }}">
+            <p>Tappa {{ $stage->name }}</p>
+        </div>
+
+        <p>Descrizione tappa: {{ $stage->description }}</p>
+
+        @endforeach
         <div class="btn">
             <form action="{{ route('admin.days.destroy', [$travel->id, $day->id]) }}" method="POST">
                 @csrf

@@ -41,6 +41,7 @@ class StageController extends Controller
    
         $new_stage = new Stage();
         $new_stage->name = $request->name;
+        $new_stage->description = $request->description;
         $new_stage->address = $request->address;
         $new_stage->lat = $geocodes['lat'];
         $new_stage->long = $geocodes['lng'];
@@ -59,34 +60,38 @@ class StageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Stage $stage)
+    public function show(Travel $travel, Day $day, Stage $stage)
     {
-        //
+        return view('admin.stages.show', compact('travel', 'day', 'stage'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Stage $stage)
+    public function edit(Travel $travel, Day $day, Stage $stage)
     {
-        //
+        return view('admin.stages.edit', compact('travel', 'day', 'stage'));  
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Stage $stage)
+    public function update(Request $request, Travel $travel, Day $day, Stage $stage)
     {
-        //
+        $data = $request->all();
+        $stage->update($data);
+        return redirect()->route('admin.travels.show', $travel->id)->with('message', 'Tappa ' . $stage->name . ' aggiornata con successo!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stage $stage)
+    public function destroy(Travel $travel, Day $day, Stage $stage)
     {
-        //
+        $stage->delete();
+        return redirect()->route('admin.travels.show', $travel->id)->with('message', 'Tappa ' . $stage->name . ' cancellata con successo!');
     }
+    
 
     public function getGeocode($address)
     {

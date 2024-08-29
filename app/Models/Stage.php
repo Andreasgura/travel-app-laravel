@@ -9,6 +9,7 @@ use App\Models\Day;
 class Stage extends Model
 {
     use HasFactory;
+    public $guarded = [];
 
     public function day()
     {

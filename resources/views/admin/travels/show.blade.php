@@ -28,7 +28,7 @@
             </form>
         </div>
         <div class="btn">
-            <a href="{{ route('admin.stages.create', [$travel->id, $day->id]) }}">Aggiungi una nuova tappa</a>
+            <a href="{{ route('admin.travels.days.stages.create', [$travel->id, $day->id]) }}">Aggiungi una nuova tappa</a>
         </div>
     </div>
     @endforeach

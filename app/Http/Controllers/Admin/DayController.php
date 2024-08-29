@@ -74,8 +74,10 @@ class DayController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Day $day)
+    public function destroy(Travel $travel, Day $day)
     {
-        //
+        $day->delete();
+        return redirect()->route('admin.travels.show', $travel->id)
+                         ->with('message', 'Giorno ' . $day->day_number . ' eliminato con successo!');
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Stage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Travel;
+use App\Models\Day;
 
 class StageController extends Controller
 {
@@ -19,9 +21,9 @@ class StageController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Travel $travel, Day $day) 
     {
-        //
+        return view('admin.stages.create', compact('travel', 'day'));
     }
 
     /**

@@ -30,8 +30,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::post('days/store/{travel}', [DayController::class, 'store'])->name('days.store');
     Route::get('days/edit/{travel}/{day}', [DayController::class, 'edit'])->name('days.edit');
     Route::put('days/update/{travel}/{day}', [DayController::class, 'update'])->name('days.update');
-    Route::delete('days/{day}', [DayController::class, 'destroy'])->name('days.destroy');
-    Route::resource('stages', StageController::class)->parameters(['stages' => 'stage']);
+    Route::delete('days/destroy/{travel}/{day}', [DayController::class, 'destroy'])->name('days.destroy');
+    Route::resource('travels.days.stages', StageController::class)->parameters(['travels' => 'travel', 'days' => 'day', 'stages' => 'stage']);
 
     //Route::resource('comics', ComicController::class);
 });

@@ -36,7 +36,7 @@ class DayController extends Controller
         $day->description = $request->description;
         $day->travel_id = $travel->id;
         $day->save();
-        return redirect()->route('admin.days.index');        
+        return redirect()->route('admin.travels.show', $travel->id);        
     }
 
     /**

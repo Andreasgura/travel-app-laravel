@@ -50,17 +50,25 @@ class DayController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Day $day)
+    public function edit(Travel $travel, Day $day)
     {
-        //
+        return view('admin.days.edit', compact('travel', 'day'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Day $day)
+    public function update(Request $request, Travel $travel, Day $day, )
     {
-        //
+        $validated = $request->validate([
+            'day_number' => 'required|integer',
+            'description' => 'nullable|string',
+        ]);
+
+        $day->update($validated);
+
+        return redirect()->route('admin.travels.show', $travel->id)
+                         ->with('message', 'Giorno ' . $day->day_number . ' aggiornato con successo!');
     }
 
     /**

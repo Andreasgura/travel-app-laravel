@@ -28,6 +28,9 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('travels', TravelController::class)->parameters(['travels' => 'travel']); 
     Route::get('days/create/{travel}', [DayController::class, 'create'])->name('days.create');
     Route::post('days/store/{travel}', [DayController::class, 'store'])->name('days.store');
+    Route::get('days/edit/{travel}/{day}', [DayController::class, 'edit'])->name('days.edit');
+    Route::put('days/update/{travel}/{day}', [DayController::class, 'update'])->name('days.update');
+    Route::delete('days/{day}', [DayController::class, 'destroy'])->name('days.destroy');
     Route::resource('stages', StageController::class)->parameters(['stages' => 'stage']);
 
     //Route::resource('comics', ComicController::class);

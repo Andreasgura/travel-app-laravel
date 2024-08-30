@@ -31,8 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'openchangedata' => [
-        'api_key' => env('OPENCHANGE_API_KEY'),
-    ]
+        'api_key' => env('OPENCHANGE_API_KEY'),]
+    ,
+    'tomtom' => [
+        'api_key' => env('TOMTOM_API_KEY'),]
     
 
 ];

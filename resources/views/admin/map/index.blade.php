@@ -25,22 +25,40 @@
     <div id="map"></div>
 
     <script>
+        // Pass stages data to JavaScript using a JSON object
+        var stages = <?php echo json_encode($day->stages); ?>;
         // Inizializza la mappa di TomTom
         var map = tt.map({
             key: '{{ config('services.tomtom.api_key') }}',
             container: 'map',
-            center: [12.5450, 41.8992], // Coordinata centrale
-            zoom: 10 // Livello di zoom
+            center: [stages[0].long, stages[0].lat], // Coordinata centrale
+            zoom: 11 // Livello di zoom
         });
 
         // Crea un marker per ogni stage
-        // Pass stages data to JavaScript using a JSON object
-        var stages = <?php echo json_encode($day->stages); ?>;
+        
 // Loop through stages using JavaScript
 stages.forEach(function(stage) {
     var marker = new tt.Marker()
         .setLngLat([stage.long, stage.lat])
         .addTo(map);
+        // Crea un popup con il nome della tappa
+        var popup = new tt.Popup({
+            offset: 35 // Offset per evitare che il popup copra il marker
+        }).setText(stage.name);
+
+        // Collega il popup al marker
+        marker.setPopup(popup);
+
+        // Mostra il popup all'hover del mouse
+        marker.getElement().addEventListener('mouseenter', function() {
+            marker.togglePopup();
+        });
+
+        // Nasconde il popup quando il mouse esce dal marker
+        marker.getElement().addEventListener('mouseleave', function() {
+            marker.togglePopup();
+        });
     });
     </script>
 </body>

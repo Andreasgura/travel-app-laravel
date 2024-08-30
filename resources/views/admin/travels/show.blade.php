@@ -47,6 +47,9 @@
     <div class="btn">
         <a href="{{ route('admin.days.create', $travel->id) }}">Aggiungi una nuova giornata</a>
     </div>
+    <div class="btn">
+        <a href="{{ route('admin.maps.show', $travel->id) }}">Visualizza mappa</a>
+    </div>
 </section>
 
 

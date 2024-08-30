@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::put('days/update/{travel}/{day}', [DayController::class, 'update'])->name('days.update');
     Route::delete('days/destroy/{travel}/{day}', [DayController::class, 'destroy'])->name('days.destroy');
     Route::resource('travels.days.stages', StageController::class)->parameters(['travels' => 'travel', 'days' => 'day', 'stages' => 'stage']);
-    Route::get('travels/{travel}/show/map', [MapController::class, 'showMap'])->name('map.show')->parameters(['travels' => 'travel']);
+    Route::get('travels/{travel}/show/map', [MapController::class, 'showMap'])->name('maps.show');
 
     //Route::resource('comics', ComicController::class);
 });

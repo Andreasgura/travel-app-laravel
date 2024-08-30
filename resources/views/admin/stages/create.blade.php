@@ -78,7 +78,7 @@
         <div class="col-md-6">
             <label for="note" class="form-label">note</label>
             <input type="text" class="form-control @error('note') is-invalid @enderror" id="note" name="note"
-                value="{{old('note')}}" required>
+                value="{{old('note')}}">
 
         </div>
         @error('note')

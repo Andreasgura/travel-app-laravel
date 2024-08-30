@@ -28,8 +28,13 @@
         </div>
 
         <p>Descrizione tappa: {{ $stage->description }}</p>
-
+        
         @endforeach
+
+        <div class="btn">
+            <a href="{{ route('admin.maps.show', $day->id) }}">Visualizza mappa</a>
+        </div>
+
         <div class="btn">
             <form action="{{ route('admin.days.destroy', [$travel->id, $day->id]) }}" method="POST">
                 @csrf
@@ -47,9 +52,9 @@
     <div class="btn">
         <a href="{{ route('admin.days.create', $travel->id) }}">Aggiungi una nuova giornata</a>
     </div>
-    <div class="btn">
+    <!-- <div class="btn">
         <a href="{{ route('admin.maps.show', $travel->id) }}">Visualizza mappa</a>
-    </div>
+    </div> -->
 </section>
 
 

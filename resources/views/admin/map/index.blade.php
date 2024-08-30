@@ -16,25 +16,32 @@
     </style>
 </head>
 <body>
-    <h1>Mappa di </h1>
+    <h1>Mappa giorno {{ $day->day_number }}</h1>
+    @foreach ($day->stages as $stage)
+        <p>{{ $stage->name }}</p>
+    @endforeach
+    
+
     <div id="map"></div>
 
     <script>
         // Inizializza la mappa di TomTom
         var map = tt.map({
-            key: '{{ config('services.tomtom.api_key') }}', // Inserisci la tua chiave API di TomTom qui
+            key: '{{ config('services.tomtom.api_key') }}',
             container: 'map',
             center: [12.5450, 41.8992], // Coordinata centrale
-            zoom: 14 // Livello di zoom
+            zoom: 10 // Livello di zoom
         });
 
-        // Aggiungi un marcatore sulla mappa
-        var marker = new tt.Marker()
-            .setLngLat([12.5450, 41.8992])
-            .addTo(map);
-        var marker2 = new tt.Marker()
-            .setLngLat([12.492231, 41.890210])
-            .addTo(map);
+        // Crea un marker per ogni stage
+        // Pass stages data to JavaScript using a JSON object
+        var stages = <?php echo json_encode($day->stages); ?>;
+// Loop through stages using JavaScript
+stages.forEach(function(stage) {
+    var marker = new tt.Marker()
+        .setLngLat([stage.long, stage.lat])
+        .addTo(map);
+    });
     </script>
 </body>
 </html>
